@@ -27,4 +27,4 @@ async function solve() {
     console.log(containedCount);
   }
   
-  solve();
+solve();
