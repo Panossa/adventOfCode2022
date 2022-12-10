@@ -19,12 +19,7 @@ const MOVEMENT_DICT = {
     "L": new Coordinate(-1, 0)
 }
 const ORIGIN = new Coordinate(0, 0);
-const tailVisitedCoordinates = [new Coordinate(ORIGIN.x, ORIGIN.y)];
-
-// Can be made faster by using Set or hashing. Preferably the latter if used in JS.
-function wasVisitedByTail(newCoordinate) {
-    return tailVisitedCoordinates.some(coord => coord.x === newCoordinate.x && coord.y === newCoordinate.y);
-}
+const tailVisitedCoordinates = new Set().add(new Coordinate(ORIGIN.x, ORIGIN.y));
 
 function asTendency(number) {
     return number < 0 ? -1 : number > 0 ? 1 : 0;
@@ -70,7 +65,7 @@ async function solve() {
                 if (knotIndex === KNOT_COUNT - 1) {
                     // Last knot is the tail, we need to note down where it goes.
                     if (!wasVisitedByTail(knot)) {
-                        tailVisitedCoordinates.push(new Coordinate(knot.x, knot.y));
+                        tailVisitedCoordinates.add(new Coordinate(knot.x, knot.y));
                     }
                 }
             }
