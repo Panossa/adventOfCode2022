@@ -90,18 +90,8 @@ async function solve() {
             for (const move of result) {
                 monkeys[move.monkeyTo].itemWorryLevels.push(move.itemWorryLevel);
             }
-            if (index === 1 && monkey.inspectionCount > 49000) {
-                console.log(monkey.inspectionCount);
-            }
         });
     }
-
-    /** DEBUG */
-    console.log(
-        monkeys
-            .slice(0, 2) // first two monkeys
-    );
-
 
     console.log(
         monkeys
@@ -114,6 +104,3 @@ async function solve() {
 }
   
 solve();
-
-
-// console.log(new Monkey([79, 60, 97], (worryLevel) => worryLevel * worryLevel, 13, 1, 3).calculateMove());
